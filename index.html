@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sublime-jekyll : A Sublime Text package for Jekyll static sites.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Sublime-jekyll</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/23maverick23/sublime-jekyll">View on GitHub</a>
+
+          <h1 id="project_title">Sublime-jekyll</h1>
+          <h2 id="project_tagline">A Sublime Text package for Jekyll static sites.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/23maverick23/sublime-jekyll/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/23maverick23/sublime-jekyll/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="sublime-jekyll" class="anchor" href="#sublime-jekyll"><span class="octicon octicon-link"></span></a>sublime-jekyll</h1>
+
+<p>A Sublime Text package for <a href="http://jekyllrb.com/">Jekyll</a> static sites. This package should help maintaining Jekyll sites and posts easier by providing access to new post/draft shortcuts, key template tags and filters, as well as common completions and a current date/datetime command (for dating posts).</p>
+
+<h3>
+<a name="new-in-this-release" class="anchor" href="#new-in-this-release"><span class="octicon octicon-link"></span></a>New in this Release</h3>
+
+<p>The 2.0.0 release brings some brand new commands for creating posts and drafts, as well as the ability to set per-project settings for paths and defaults. Also added is the ability to access existing posts from the Command Palette for making quick edits.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a name="package-control" class="anchor" href="#package-control"><span class="octicon octicon-link"></span></a>Package Control</h3>
+
+<p>You can install this package using <a href="https://sublime.wbond.net/packages/Jekyll">Package Control</a> from wbond.net.</p>
+
+<ul>
+<li>Press <code>ctrl+shift+p</code> (Windows/Linux) or <code>command+shift+p</code> (OS X) to bring up the Command Palette (or use <em>Tools &gt; Command Palette</em> menu)</li>
+<li>Type to search for the <code>Package Control: Install Package</code> command</li>
+<li>Search packages for <strong>Jekyll</strong> and hit <code>enter</code> to install</li>
+<li>
+<strong>NOTE:</strong> You may need to restart in order to use this package</li>
+</ul><h3>
+<a name="manual" class="anchor" href="#manual"><span class="octicon octicon-link"></span></a>Manual</h3>
+
+<p><a href="https://github.com/23maverick23/sublime-jekyll.git">Clone</a> or <a href="https://github.com/23maverick23/sublime-jekyll/archive/master.zip">download</a> the contents of this repo into your Sublime Text <code>Packages</code> folder.</p>
+
+<ul>
+<li>OS X: <code>~/Library/Application\ Support/Sublime\ Text\ 3/Packages</code>
+</li>
+<li>Windows: <code>%APPDATA%\Sublime Text 3\Packages</code>
+</li>
+<li>Linux: <code>~/.config/sublime-text-3/Packages</code>
+</li>
+</ul><blockquote>
+<p>After installing this package, make sure you configure your User settings file:</p>
+</blockquote>
+
+<div class="highlight highlight-python"><pre><span class="p">{</span>
+
+    <span class="o">//</span> <span class="n">This</span> <span class="n">should</span> <span class="n">point</span> <span class="n">to</span> <span class="n">your</span> <span class="s">"_posts"</span> <span class="n">directory</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">This</span> <span class="n">should</span> <span class="n">be</span> <span class="n">an</span> <span class="n">absolute</span> <span class="n">path</span><span class="o">.</span> <span class="n">Also</span><span class="p">,</span> <span class="n">the</span> <span class="n">path</span> <span class="n">should</span>
+    <span class="o">//</span> <span class="n">match</span> <span class="n">your</span> <span class="n">system</span> <span class="n">convention</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">Windows</span> <span class="n">machines</span> <span class="n">should</span>
+    <span class="o">//</span> <span class="n">have</span> <span class="n">a</span> <span class="n">path</span> <span class="n">similar</span> <span class="n">to</span> <span class="s">"C:</span><span class="se">\\</span><span class="s">Users</span><span class="se">\\</span><span class="s">username</span><span class="se">\\</span><span class="s">site</span><span class="se">\\</span><span class="s">_posts"</span><span class="o">.</span>
+    <span class="o">//</span> <span class="o">*</span><span class="n">nix</span> <span class="n">systems</span> <span class="n">should</span> <span class="n">have</span> <span class="n">a</span> <span class="n">path</span> <span class="n">similar</span> <span class="n">to</span> <span class="s">"/Users/username/site/_posts"</span><span class="o">.</span>
+    <span class="s">"posts_path"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">This</span> <span class="n">should</span> <span class="n">point</span> <span class="n">to</span> <span class="n">your</span> <span class="s">"_drafts"</span> <span class="n">directory</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">This</span> <span class="n">should</span> <span class="n">be</span> <span class="n">an</span> <span class="n">absolute</span> <span class="n">path</span><span class="o">.</span> <span class="n">Also</span><span class="p">,</span> <span class="n">the</span> <span class="n">path</span> <span class="n">should</span>
+    <span class="o">//</span> <span class="n">match</span> <span class="n">your</span> <span class="n">system</span> <span class="n">convention</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">Windows</span> <span class="n">machines</span> <span class="n">should</span>
+    <span class="o">//</span> <span class="n">have</span> <span class="n">a</span> <span class="n">path</span> <span class="n">similar</span> <span class="n">to</span> <span class="s">"C:</span><span class="se">\\</span><span class="s">Users</span><span class="se">\\</span><span class="s">username</span><span class="se">\\</span><span class="s">site</span><span class="se">\\</span><span class="s">_drafts"</span><span class="o">.</span>
+    <span class="o">//</span> <span class="o">*</span><span class="n">nix</span> <span class="n">systems</span> <span class="n">should</span> <span class="n">have</span> <span class="n">a</span> <span class="n">path</span> <span class="n">similar</span> <span class="n">to</span> <span class="s">"/Users/username/site/_drafts"</span><span class="o">.</span>
+    <span class="s">"drafts_path"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">This</span> <span class="n">string</span> <span class="n">value</span> <span class="n">should</span> <span class="n">represent</span> <span class="n">the</span> <span class="n">default</span> <span class="n">syntax</span> <span class="k">for</span> <span class="n">a</span> <span class="n">new</span> <span class="n">post</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">Valid</span> <span class="n">options</span> <span class="n">are</span><span class="p">:</span> <span class="s">"Markdown"</span><span class="p">,</span> <span class="s">"Textile"</span>
+    <span class="s">"default_post_syntax"</span><span class="p">:</span> <span class="s">"Markdown"</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">This</span> <span class="n">string</span> <span class="n">value</span> <span class="n">should</span> <span class="n">represent</span> <span class="n">the</span> <span class="n">default</span> <span class="n">layout</span> <span class="k">for</span> <span class="n">new</span> <span class="n">posts</span><span class="o">.</span>
+    <span class="s">"default_post_layout"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">This</span> <span class="n">value</span> <span class="n">should</span> <span class="n">represent</span> <span class="n">the</span> <span class="n">default</span> <span class="n">categories</span> <span class="k">for</span> <span class="n">new</span> <span class="n">posts</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">Each</span> <span class="n">category</span> <span class="n">should</span> <span class="n">be</span> <span class="n">entered</span> <span class="k">as</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">string</span> <span class="n">format</span>
+    <span class="o">//</span> <span class="k">with</span> <span class="n">commas</span> <span class="n">separating</span> <span class="n">values</span> <span class="p">[</span><span class="s">"cat1"</span><span class="p">,</span> <span class="s">"cat2"</span><span class="p">]</span><span class="o">.</span>
+    <span class="s">"default_post_categories"</span><span class="p">:</span> <span class="p">[],</span>
+
+    <span class="o">//</span> <span class="n">This</span> <span class="n">value</span> <span class="n">should</span> <span class="n">represent</span> <span class="n">the</span> <span class="n">default</span> <span class="n">tags</span> <span class="k">for</span> <span class="n">new</span> <span class="n">posts</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">Each</span> <span class="n">tag</span> <span class="n">should</span> <span class="n">be</span> <span class="n">entered</span> <span class="k">as</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">string</span> <span class="n">format</span>
+    <span class="o">//</span> <span class="k">with</span> <span class="n">commas</span> <span class="n">separating</span> <span class="n">values</span> <span class="p">[</span><span class="s">"tag1"</span><span class="p">,</span> <span class="s">"tag2"</span><span class="p">]</span><span class="o">.</span>
+    <span class="s">"default_post_tags"</span><span class="p">:</span> <span class="p">[],</span>
+
+    <span class="o">//</span> <span class="n">A</span> <span class="n">boolean</span> <span class="n">specifying</span> <span class="k">if</span> <span class="n">you</span> <span class="n">want</span> <span class="n">new</span> <span class="n">posts</span> <span class="n">to</span> <span class="n">be</span> <span class="n">marked</span> <span class="k">as</span> <span class="n">published</span><span class="o">.</span>
+    <span class="s">"default_post_published"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">A</span> <span class="n">valid</span> <span class="n">Python</span> <span class="n">strftime</span> <span class="n">string</span>
+    <span class="s">"insert_date_format"</span><span class="p">:</span> <span class="s">"%Y-%m-</span><span class="si">%d</span><span class="s">"</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">A</span> <span class="n">valid</span> <span class="n">Python</span> <span class="n">strftime</span> <span class="n">string</span>
+    <span class="s">"insert_datetime_format"</span><span class="p">:</span> <span class="s">"%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S"</span>
+
+<span class="p">}</span>
+
+</pre></div>
+
+<p>For per-project settings, make sure you add your Jekyll settings correctly:</p>
+
+<div class="highlight highlight-python"><pre><span class="p">{</span>
+    <span class="s">"folders"</span><span class="p">:</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"follow_symlinks"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s">"path"</span><span class="p">:</span> <span class="s">"/Users/username/site/"</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+
+    <span class="s">"settings"</span><span class="p">:</span>
+    <span class="p">{</span>
+        <span class="s">"Jekyll"</span><span class="p">:</span>
+        <span class="p">{</span>
+            <span class="s">"posts_path"</span><span class="p">:</span> <span class="s">"/Users/username/site/_posts"</span><span class="p">,</span>
+            <span class="s">"drafts_path"</span><span class="p">:</span> <span class="s">"/Users/username/site/_drafts"</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="whats-included" class="anchor" href="#whats-included"><span class="octicon octicon-link"></span></a>What's Included</h2>
+
+<h3>
+<a name="syntaxes" class="anchor" href="#syntaxes"><span class="octicon octicon-link"></span></a>Syntaxes</h3>
+
+<ul>
+<li>HTML (Jekyll)</li>
+<li>JSON (Jekyll)</li>
+<li>Markdown (Jekyll)</li>
+<li>Textile (Jekyll)</li>
+</ul><h3>
+<a name="commands--key-bindings" class="anchor" href="#commands--key-bindings"><span class="octicon octicon-link"></span></a>Commands &amp; Key Bindings</h3>
+
+<ul>
+<li>Jekyll: New post =&gt; <code>CMD+K, CMD+P</code>
+</li>
+<li>Jekyll: New draft =&gt; <code>CMD+K, CMD+F</code>
+</li>
+<li>Jekyll: Insert current date =&gt; <code>CMD+K, CMD+D</code>
+</li>
+<li><p>Jekyll: Insert current datetime =&gt; <code>CMD+K, CMD+T</code></p></li>
+<li><p>Jekyll: Open post...</p></li>
+<li>Jekyll: Open draft...</li>
+<li>Jekyll: Promote draft to post...</li>
+</ul><p>There are default key bindings for all commands, however you can re-assign them in your user key bindings file (<em>Preferences &gt; Package Settings &gt; Jekyll &gt; Key Bindings – User</em>).</p>
+
+<h3>
+<a name="snippets" class="anchor" href="#snippets"><span class="octicon octicon-link"></span></a>Snippets</h3>
+
+<ul>
+<li>assign: <code>{% assign a = b %}</code>
+</li>
+<li>capture: <code>{% capture %}{% endcapture %}</code>
+</li>
+<li>case: <code>{% case %}{% endcase %}</code>
+</li>
+<li>comment: <code>{% comment %}{% endcomment %}</code>
+</li>
+<li>va: <code>{{ variable }}</code>
+</li>
+<li>cycle: <code>{% cycle %}</code>
+</li>
+<li>elsif: <code>{% elsif %}</code>
+</li>
+<li>for: <code>{% for item in list %}{% endfor %}</code>
+</li>
+<li>
+<p>front-matter:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="nn">---</span>
+<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">post</span>
+<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">date</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+<span class="nn">---</span>
+</pre></div>
+</li>
+<li><p>gist: <code>{% gist url %}</code></p></li>
+<li>highlight: <code>{% highlight syntax|linenos %}{% endhighlight %}</code>
+</li>
+<li>if: <code>{% if this %}{% endif %}</code>
+</li>
+<li>ifelse: <code>{% if this %}{% else %}{% endif %}</code>
+</li>
+<li>include: <code>{% include this.html %}</code>
+</li>
+<li>post_url: <code>{% post_url url %}</code>
+</li>
+<li>raw: <code>{% raw %}{% endraw %}</code>
+</li>
+<li>unless: <code>{% unless this %}{% endunless %}</code>
+</li>
+<li>when: <code>{% when this %}</code>
+</li>
+</ul><h3>
+<a name="completions" class="anchor" href="#completions"><span class="octicon octicon-link"></span></a>Completions</h3>
+
+<h4>
+<a name="tags" class="anchor" href="#tags"><span class="octicon octicon-link"></span></a>Tags</h4>
+
+<ul>
+<li>page
+
+<ul>
+<li>page.categories</li>
+<li>page.content</li>
+<li>page.date</li>
+<li>page.excerpt</li>
+<li>page.id</li>
+<li>page.path</li>
+<li>page.tags</li>
+<li>page.title</li>
+<li>page.url</li>
+</ul>
+</li>
+<li>paginator
+
+<ul>
+<li>paginator.next_page</li>
+<li>paginator.next_page_path</li>
+<li>paginator.page</li>
+<li>paginator.per_page</li>
+<li>paginator.posts</li>
+<li>paginator.previous_page</li>
+<li>paginator.previous_page_path</li>
+<li>paginator.total_pages</li>
+<li>paginator.total_posts</li>
+</ul>
+</li>
+<li>site
+
+<ul>
+<li>site.date</li>
+<li>site.domain</li>
+<li>site.feed_url</li>
+<li>site.pages</li>
+<li>site.permalink</li>
+<li>site.posts</li>
+<li>site.sitemap_url</li>
+<li>site.time</li>
+<li>site.related_posts</li>
+<li>site.categories</li>
+<li>site.tags</li>
+</ul>
+</li>
+</ul><h4>
+<a name="filters" class="anchor" href="#filters"><span class="octicon octicon-link"></span></a>Filters</h4>
+
+<ul>
+<li>append</li>
+<li>array_to_sentence_string</li>
+<li>camelize</li>
+<li>capitalize</li>
+<li>cgi_escape</li>
+<li>date</li>
+<li>date_to_long_string</li>
+<li>date_to_rfc822</li>
+<li>date_to_string</li>
+<li>date_to_xmlschema</li>
+<li>divided_by</li>
+<li>downcase</li>
+<li>escape</li>
+<li>first</li>
+<li>group_by</li>
+<li>handleize</li>
+<li>highlight_active_tag</li>
+<li>img_tag</li>
+<li>join</li>
+<li>json</li>
+<li>jsonify</li>
+<li>last</li>
+<li>link_to</li>
+<li>markdownify</li>
+<li>minus</li>
+<li>money</li>
+<li>money_with_currency</li>
+<li>money_without_currency</li>
+<li>newline_to_br</li>
+<li>number_of_words</li>
+<li>pluralize</li>
+<li>plus</li>
+<li>prepend</li>
+<li>remove</li>
+<li>remove_first</li>
+<li>replace</li>
+<li>replace_first</li>
+<li>script_tag</li>
+<li>size</li>
+<li>sort</li>
+<li>split</li>
+<li>strip_html</li>
+<li>strip_newlines</li>
+<li>stylesheet_tag</li>
+<li>textilize</li>
+<li>times</li>
+<li>trim</li>
+<li>truncate</li>
+<li>truncatewords</li>
+<li>upcase</li>
+<li>uri_escape</li>
+<li>weight_with_unit</li>
+<li>where</li>
+<li>xml_escape</li>
+</ul><h3>
+<a name="build-systems" class="anchor" href="#build-systems"><span class="octicon octicon-link"></span></a>Build Systems</h3>
+
+<p>If desired, you can add a custom Jekyll build system to your Sublime projects. This allows you to create a specific build system for each Jekyll project you're working on. From what I can tell, a project-specific build system needs to be used, as opposed to a standard build system. This is because the <code>jekyll</code> CLT command must be run from the main Jekyll folder that contains the _config.yml file (which cannot be guaranteed to be the current project folder).</p>
+
+<div class="highlight highlight-python"><pre><span class="p">{</span>
+    <span class="s">"build_systems"</span><span class="p">:</span>
+    <span class="p">[</span>
+        <span class="o">//</span> <span class="n">This</span> <span class="n">will</span> <span class="n">build</span> <span class="n">your</span> <span class="n">Jekyll</span> <span class="n">site</span><span class="p">,</span> <span class="ow">and</span> <span class="k">print</span> <span class="n">a</span> <span class="n">trace</span> <span class="n">to</span> <span class="n">the</span> <span class="n">console</span>
+        <span class="p">{</span>
+            <span class="s">"name"</span><span class="p">:</span> <span class="s">"Jekyll"</span><span class="p">,</span>
+            <span class="o">//</span> <span class="n">Change</span> <span class="n">this</span> <span class="n">directory</span> <span class="n">to</span> <span class="n">match</span> <span class="n">your</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">Jekyll</span> <span class="n">project</span> <span class="n">folder</span>
+            <span class="s">"working_dir"</span><span class="p">:</span> <span class="s">"/path/to/jekyll/project/root"</span><span class="p">,</span>
+            <span class="s">"cmd"</span><span class="p">:</span> <span class="s">"jekyll build -t"</span><span class="p">,</span>
+            <span class="s">"shell"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s">"encoding"</span><span class="p">:</span> <span class="s">"UTF-8"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>Feel free to open the files in <a href="https://github.com/23maverick23/sublime-jekyll/tree/master/Tests">Tests</a> to view the syntax highlighting, snippets, and completions, and to test adding the date commands.</p>
+
+<h2>
+<a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h2>
+
+<p>Much of this package would not have been possible without the help (mostly unsolicited) of many community members and open source packages. A big part of my learning experience has been reviewing source code from some really great packages to get ideas for my own uses. I've listed some of those packages below - please visit them and use them as you see fit!</p>
+
+<ul>
+<li>
+<a href="https://github.com/siteleaf/liquid-syntax-mode">liquid-syntax-mode</a> from siteleaf (the original fork for this project)</li>
+<li>
+<a href="https://github.com/FichteFoll/sublimetext-insertdate">sublime-insertdate</a> from FichteFoll (basis of insert date commands)</li>
+<li>
+<a href="https://github.com/skuroda/Sublime-AdvancedNewFile">Sublime-AdvancedNewFile</a> from skuroda (new post creation tips)</li>
+<li>
+<a href="https://github.com/condemil/Gist">Gist</a> from condemil (new post creation tips)</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="LICENSE">LICENSE</a></p>
+
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<p><a href="CHANGELOG">CHANGELOG</a></p>
+
+<h2>
+<a name="contribute" class="anchor" href="#contribute"><span class="octicon octicon-link"></span></a>Contribute</h2>
+
+<ol>
+<li>
+<a href="https://github.com/23maverick23/sublime-jekyll/fork">Fork</a> this repo.</li>
+<li>Create a branch <code>git checkout -b my_feature</code>
+</li>
+<li>Commit your changes <code>git commit -am "Added Feature"</code>
+</li>
+<li>Push to the branch <code>git push origin my_feature</code>
+</li>
+<li>Open a <a href="https://github.com/23maverick23/sublime-jekyll/pulls">Pull Request</a>
+</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sublime-jekyll maintained by <a href="https://github.com/23maverick23">23maverick23</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
