@@ -1,33 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>sublime-jekyll by 23maverick23</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <title>sublime-jekyll by 23maverick23</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
+    <header>
+      <div class="inner">
         <h1>sublime-jekyll</h1>
-        <p>A Sublime Text package for Jekyll static sites.</p>
-        <p class="view"><a href="https://github.com/23maverick23/sublime-jekyll">View the Project on GitHub <small>23maverick23/sublime-jekyll</small></a></p>
-        <ul>
-          <li><a href="https://github.com/23maverick23/sublime-jekyll/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/23maverick23/sublime-jekyll/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/23maverick23/sublime-jekyll">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
+        <h2>A Sublime Text package for Jekyll static sites.</h2>
+        <a href="https://github.com/23maverick23/sublime-jekyll" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
 <a id="sublime-jekyll" class="anchor" href="#sublime-jekyll" aria-hidden="true"><span class="octicon octicon-link"></span></a>sublime-jekyll</h1>
 
 <p>A Sublime Text package for <a href="http://jekyllrb.com/">Jekyll</a> static sites. This package should help maintaining Jekyll sites and posts easier by providing access to new post/draft shortcuts, key template tags and filters, as well as common completions and a current date/datetime command (for dating posts).</p>
@@ -35,7 +36,9 @@
 <h3>
 <a id="new-in-this-release" class="anchor" href="#new-in-this-release" aria-hidden="true"><span class="octicon octicon-link"></span></a>New in this Release</h3>
 
-<p>The 2.1 release brings some brand new commands for creating posts and drafts, as well as the ability to set per-project settings for paths and defaults. Also added is the ability to access existing posts from the Command Palette for making quick edits. Finally, you can optionally set your own custom front-matter values to drive per-project defaults, or your own flavor of a front-matter template.</p>
+<p>The 2.2 release introduces.</p>
+
+<p>For previous releases, have a look at the <a href="CHANGELOG">CHANGELOG ➭</a></p>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -56,7 +59,7 @@
 <h3>
 <a id="manual" class="anchor" href="#manual" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual</h3>
 
-<p><a href="https://github.com/23maverick23/sublime-jekyll.git">Clone</a> or <a href="https://github.com/23maverick23/sublime-jekyll/archive/master.zip">download</a> the contents of this repo into your Sublime Text <code>Packages</code> folder.</p>
+<p><a href="https://github.com/23maverick23/sublime-jekyll.git">Clone ↻</a> or <a href="https://github.com/23maverick23/sublime-jekyll/archive/master.zip">download ⬇</a> the contents of this repo into your Sublime Text <code>Packages</code> folder.</p>
 
 <ul>
 <li>OS X: <code>~/Library/Application\ Support/Sublime\ Text\ 3/Packages</code>
@@ -87,6 +90,11 @@
     <span class="pl-k">//</span> have a path similar to <span class="pl-s1"><span class="pl-pds">"</span>C:<span class="pl-cce">\\</span>Users<span class="pl-cce">\\</span>username<span class="pl-cce">\\</span>site<span class="pl-cce">\\</span>_drafts<span class="pl-pds">"</span></span>.
     <span class="pl-k">//</span> <span class="pl-k">*</span>nix systems should have a path similar to <span class="pl-s1"><span class="pl-pds">"</span>/Users/username/site/_drafts<span class="pl-pds">"</span></span>.
     <span class="pl-s1"><span class="pl-pds">"</span>drafts_path<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+
+    <span class="pl-k">//</span> If you have multiple Jekyll blogs, but don<span class="pl-s1"><span class="pl-pds">'</span>t use Sumblime Projects,<span class="pl-ii"></span></span>
+    <span class="pl-k">//</span> you can optionally have sublime<span class="pl-k">-</span>jekyll look <span class="pl-k">for</span> the `_posts` <span class="pl-k">or</span> `_drafts`
+    <span class="pl-k">//</span> folders <span class="pl-s3">open</span> <span class="pl-k">in</span> your sidebar. This should have a value of true <span class="pl-k">or</span> false.
+    <span class="pl-s1"><span class="pl-pds">"</span>automatically_find_paths<span class="pl-pds">"</span></span>: false,
 
     <span class="pl-k">//</span> This string value should represent the default syntax <span class="pl-k">for</span> a new post.
     <span class="pl-k">//</span> Valid options are: <span class="pl-s1"><span class="pl-pds">"</span>Markdown<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Textile<span class="pl-pds">"</span></span>
@@ -149,7 +157,7 @@
 }
 </pre></div>
 
-<p>For per-project settings, make sure you add your Jekyll settings correctly:</p>
+<p>For per-project settings, make sure you add your Jekyll settings correctly (read <a href="https://github.com/23maverick23/sublime-jekyll/issues/16">Issue #16</a> if you have questions on formatting).</p>
 
 <div class="highlight highlight-python"><pre>{
     <span class="pl-s1"><span class="pl-pds">"</span>folders<span class="pl-pds">"</span></span>:
@@ -204,10 +212,8 @@
 </li>
 <li>Jekyll: New draft =&gt; <code>CMD+K, CMD+F</code>
 </li>
-<li>Jekyll: Insert current date =&gt; <code>CMD+K, CMD+D</code>
-</li>
-<li>Jekyll: Insert current datetime =&gt; <code>CMD+K, CMD+T</code>
-</li>
+<li>Jekyll: Insert current date</li>
+<li>Jekyll: Insert current datetime</li>
 <li>Jekyll: Open post...</li>
 <li>Jekyll: Open draft...</li>
 <li>Jekyll: Promote draft to post...</li>
@@ -240,10 +246,10 @@
 
 <div class="highlight highlight-yaml"><pre><span class="pl-s1">-<span class="pl-s1">--</span></span>
 <span class="pl-s1"><span class="pl-ent">layout:</span> <span class="pl-s1">post</span></span>
-<span class="pl-s1"><span class="pl-ent">title:</span><span class="pl-s1"></span></span>
+<span class="pl-s1"><span class="pl-ent">title:</span></span>
 <span class="pl-s1"><span class="pl-ent">published:</span> <span class="pl-s1">true</span></span>
-<span class="pl-s1"><span class="pl-ent">categories:</span><span class="pl-s1"> </span></span>[]
-<span class="pl-s1"><span class="pl-ent">tags:</span><span class="pl-s1"> </span></span>[]
+<span class="pl-s1"><span class="pl-ent">categories:</span> <span class="pl-s1">[]</span></span>
+<span class="pl-s1"><span class="pl-ent">tags:</span> <span class="pl-s1">[]</span></span>
 <span class="pl-s1">-<span class="pl-s1">--</span></span></pre></div>
 </li>
 <li><p>gist: <code>{% gist url %}</code></p></li>
@@ -401,7 +407,7 @@
 <h2>
 <a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
 
-<p>Feel free to open the files in <a href="https://github.com/23maverick23/sublime-jekyll/tree/master/Tests">Tests</a> to view the syntax highlighting, snippets, and completions, and to test adding the date commands.</p>
+<p>Feel free to open the files in <a href="https://github.com/23maverick23/sublime-jekyll/tree/master/Tests">Tests ➭</a> to view the syntax highlighting, snippets, and completions, and to test adding the date commands.</p>
 
 <h2>
 <a id="thanks" class="anchor" href="#thanks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thanks</h2>
@@ -422,12 +428,12 @@
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p><a href="LICENSE">LICENSE</a></p>
+<p><a href="LICENSE">LICENSE ➭</a></p>
 
 <h2>
 <a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
 
-<p><a href="CHANGELOG">CHANGELOG</a></p>
+<p><a href="CHANGELOG">CHANGELOG ➭</a></p>
 
 <h2>
 <a id="issues" class="anchor" href="#issues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Issues</h2>
@@ -443,24 +449,50 @@
 
 <ol>
 <li>
-<a href="https://github.com/23maverick23/sublime-jekyll/fork">Fork</a> this repo.</li>
+<a href="https://github.com/23maverick23/sublime-jekyll/fork">Fork ⇉</a> this repo.</li>
 <li>Create a branch <code>git checkout -b my_feature</code>
 </li>
 <li>Commit your changes <code>git commit -am "Added Feature"</code>
 </li>
 <li>Push to the branch <code>git push origin my_feature</code>
 </li>
-<li>Open a <a href="https://github.com/23maverick23/sublime-jekyll/pulls">Pull Request</a>
+<li>Open a <a href="https://github.com/23maverick23/sublime-jekyll/pulls">Pull Request ⥆</a>
 </li>
 </ol>
-      </section>
+
+<p><strong>Thanks to the current contributors!</strong></p>
+
+<ul>
+<li>fk128</li>
+<li>Kimi</li>
+<li>Marcos Ojeda</li>
+<li>Robert Holak</li>
+<li>svensvenson</li>
+</ul>
+
+<blockquote>
+<p><a href="https://github.com/23maverick23/sublime-jekyll/graphs/contributors">View the contributor graph ➭</a></p>
+</blockquote>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/23maverick23/sublime-jekyll/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/23maverick23/sublime-jekyll/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/23maverick23/sublime-jekyll"></a> is maintained by <a href="https://github.com/23maverick23">23maverick23</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/23maverick23">23maverick23</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
