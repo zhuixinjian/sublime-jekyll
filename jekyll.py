@@ -191,7 +191,7 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
 
     def create_post_frontmatter(self, title):
         view = self.window.active_view()
-        POST_CATEGORIES = get_setting(view, 'default_post_categories')
+        POST_CATEGORY = get_setting(view, 'default_post_category')
         POST_TAGS = get_setting(view, 'default_post_tags')
         POST_PUBLISHED = get_setting(view, 'default_post_published', True)
         POST_EXTRAS = get_setting(view, 'default_post_extras', {})
@@ -199,8 +199,8 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
         POST_TITLE_STR = str(title)
         POST_LAYOUT_STR = str(get_setting(view, 'default_post_layout'))
 
-        POST_CATEGORIES_STR = str(
-            'categories: {0}\n'.format(POST_CATEGORIES) if POST_CATEGORIES is not None else ''
+        POST_CATEGORY_STR = str(
+            'category: {0}\n'.format(POST_CATEGORY) if POST_CATEGORY is not None else ''
         )
         POST_TAGS_STR = str(
             'tags: {0}\n'.format(POST_TAGS) if POST_TAGS is not None else ''
@@ -255,7 +255,7 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
         ).format(
             POST_LAYOUT_STR,
             POST_TITLE_STR,
-            POST_CATEGORIES_STR,
+            POST_CATEGORY_STR,
             POST_TAGS_STR,
             POST_PUBLISHED_STR,
             POST_EXTRAS_STR
