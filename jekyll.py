@@ -195,6 +195,7 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
         POST_TAGS = get_setting(view, 'default_post_tags')
         POST_PUBLISHED = get_setting(view, 'default_post_published', True)
         POST_EXTRAS = get_setting(view, 'default_post_extras', {})
+        POST_COMMENTS = get_setting(view, 'default_post_comments', True)
 
         POST_TITLE_STR = str(title)
         POST_LAYOUT_STR = str(get_setting(view, 'default_post_layout'))
@@ -208,6 +209,11 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
         POST_PUBLISHED_STR = str(
             'published: {0}\n'.format(POST_PUBLISHED) if POST_PUBLISHED is not None else ''
         )
+
+        POST_COMMENTS_STR = str(
+            'comments: {0}\n'.format(POST_COMMENTS) if POST_COMMENTS is not None else ''
+        )
+
 
         def pretty_walk(settings_dict):
             """
@@ -251,6 +257,7 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
             '{3}'
             '{4}'
             '{5}'
+            '{6}'
             '\n---\n\n'
         ).format(
             POST_LAYOUT_STR,
@@ -258,6 +265,7 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
             POST_CATEGORY_STR,
             POST_TAGS_STR,
             POST_PUBLISHED_STR,
+            POST_COMMENTS_STR,
             POST_EXTRAS_STR
         )
         return frontmatter
@@ -276,7 +284,7 @@ class JekyllNewPostBase(sublime_plugin.WindowCommand):
         if syntax == 'Textile':
             file_ext = '.textile'
         elif syntax == 'Markdown':
-            file_ext = '.md'
+            file_ext = '.markdown'
         else:
             file_ext = '.txt'
 
